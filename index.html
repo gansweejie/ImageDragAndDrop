@@ -103,7 +103,9 @@
         $('#uploadimg').on('click', function () {
             var file = $('#file-input').prop('files')[0];
             if (file) {
-                uploadFile(file);
+                alert("Upload Success: You have uploaded an image.");
+            } else {
+                alert("Upload Failed: No image uploaded.");
             }
         });
 
@@ -141,27 +143,6 @@
                 $('#drop-zone .drop-message').hide();
                 $('#drop-zone i').hide();
             }
-        }
-
-        function uploadFile(file) {
-            var formData = new FormData();
-
-            formData.append('file', file);
-
-            // Use AJAX to upload the file
-            $.ajax({
-                url: url,
-                type: 'POST',
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function (data) {
-                    console.log('Upload success: ' + data);
-                },
-                error: function (xhr, status, error) {
-                    console.log('Upload error: ' + error);
-                }
-            });
         }
 
     });
